@@ -1,0 +1,6 @@
+{
+    "dependencies": ["."],
+    "graphs": {
+        "agent": "langgraph_example:agent_graph"
+    }
+}
