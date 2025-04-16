@@ -83,6 +83,7 @@ Edite o arquivo `.env` preenchendo com suas chaves de API:
 ```env
 GEMINI_API_KEY=your_gemini_api_key_here
 TAVILY_API_KEY=your_tavily_api_key_here
+LANGSMITH_API_KEY=your_langsmith_api_key_here
 ```
 
 ---
