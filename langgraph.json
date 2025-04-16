@@ -1,6 +1,6 @@
 {
     "dependencies": ["."],
     "graphs": {
-        "agent": "langgraph_example:agent_graph"
+        "SearchAgent": "langgraph_example:agent_graph"
     }
 }

@@ -3,10 +3,11 @@ import os
 from dotenv import load_dotenv
 
 from langchain_core.tools import tool
-from langchain_core.messages import SystemMessage
+from langchain_core.messages import SystemMessage,HumanMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langgraph.prebuilt import create_react_agent
 from langchain_community.tools.tavily_search import TavilySearchResults
+from langsmith import traceable
 
 # Carregar variáveis de ambiente (.env)
 load_dotenv()
@@ -52,3 +53,21 @@ agent_graph = create_react_agent(
     tools=available_tools,
     prompt=persona_message
 )
+
+
+# Function that runs the trace with LangSmith
+@traceable(name="Run Gemini Agent")
+def run_agent(input_text: str):
+    inputs = {
+        "messages": [
+            persona_message,  # SystemMessage
+            HumanMessage(content=input_text)  # HumanMessage with the question
+        ]
+    }
+    return agent_graph.invoke(inputs)
+
+
+# Execute
+if __name__ == "__main__":
+    response = run_agent("What is the latest news on AI regulations in Europe?")
+    print(response)
