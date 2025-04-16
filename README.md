@@ -38,6 +38,9 @@ LangGraphExampleAgentWithTracing/
 - **Função `run_agent` com decorator `@traceable`:** Facilita rastreamento de interações individuais com o agente.
 - **Execução direta com exemplo integrado:** Permite rodar rapidamente uma consulta de exemplo.
 
+#### Imagem com exemplo de tracing de projetos
+
+![alt text](image.png)
 ---
 
 ## ⚙️ Configuração e Instalação
