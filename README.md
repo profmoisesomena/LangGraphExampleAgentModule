@@ -5,6 +5,7 @@ Este projeto cria um agente inteligente capaz de buscar informações atualizada
 O agente é implementado usando a arquitetura **ReAct** via **LangGraph**, permitindo raciocinar sobre perguntas recebidas e e executar ações externas (como buscas online) para construir respostas mais completas e atualizadas..
 
 Esta versão do projeto incorpora integração com LangSmith para rastreamento (tracing) das execuções do agente, possibilitando inspecionar e avaliar o passo a passo de suas operações.
+
 ---
 
 ## 🛠️ Tecnologias Utilizadas
