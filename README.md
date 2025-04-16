@@ -1,9 +1,10 @@
 # LangGraphExampleAgent 🌐
 
-Este projeto cria um agente inteligente capaz de buscar informações atualizadas na web usando o modelo **Gemini 2.0 Flash** integrado à **Tavily Search API**.
+Este projeto cria um agente inteligente capaz de buscar informações atualizadas na web usando o modelo **Gemini-2.5-pro-exp-03-25** integrado à **Tavily Search API**.
 
-O agente é implementado usando a arquitetura **ReAct** via **LangGraph**, permitindo raciocinar sobre perguntas recebidas e executar ações externas, como buscas online, para construir respostas mais completas.
+O agente é implementado usando a arquitetura **ReAct** via **LangGraph**, permitindo raciocinar sobre perguntas recebidas e e executar ações externas (como buscas online) para construir respostas mais completas e atualizadas..
 
+Esta versão do projeto incorpora integração com LangSmith para rastreamento (tracing) das execuções do agente, possibilitando inspecionar e avaliar o passo a passo de suas operações.
 ---
 
 ## 🛠️ Tecnologias Utilizadas
@@ -15,19 +16,26 @@ O agente é implementado usando a arquitetura **ReAct** via **LangGraph**, permi
 - [LangChain Community Tools (Tavily)](https://github.com/langchain-ai/langchain/tree/main/libs/langchain-community)
 - [Tavily Search API](https://app.tavily.com/)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
+- [LangSmith (plataforma de observabilidade e tracing para agentes LangChain)](https://pypi.org/project/langsmith/)
 
 ---
 
 ## 📦 Estrutura do Projeto
 
 ```
-LangGraphExampleAgent/
+LangGraphExampleAgentWithTracing/
 ├── .env.example     # Exemplo de configuração de variáveis de ambiente
 ├── README.md        # Documentação do projeto
 ├── langgraph_example.py         # Código principal do agente LangGraph (ReAct Agent)
 ├── requirements.txt # (opcional) Arquivo com dependências do projeto
 └── langgraph.json   # Arquivo de Configuração LangGraph
 ```
+
+## ✨ Novidades e Funcionalidades Adicionadas
+
+- **Integração com LangSmith:** Agora o agente pode registrar automaticamente suas execuções na plataforma LangSmith.
+- **Função `run_agent` com decorator `@traceable`:** Facilita rastreamento de interações individuais com o agente.
+- **Execução direta com exemplo integrado:** Permite rodar rapidamente uma consulta de exemplo.
 
 ---
 
@@ -84,6 +92,14 @@ langgraph dev
 ```
 
 Isso abrirá um ambiente interativo para testar o agente!
+
+
+---
+**Execução direta no terminal:**
+
+```bash
+python langgraph_example.py
+```
 
 ---
 

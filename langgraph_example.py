@@ -18,7 +18,7 @@ TAVILY_TOKEN = os.getenv("TAVILY_API_KEY")
 
 # Instanciação do modelo LLM da Google
 llm_model = ChatGoogleGenerativeAI(
-    model="gemini-2.0-flash",
+    model="gemini-2.5-pro-exp-03-25",
     temperature=0,
     api_key=GEMINI_TOKEN
 )
