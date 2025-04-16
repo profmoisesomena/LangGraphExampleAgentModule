@@ -115,7 +115,7 @@ O arquivo `langgraph.json` pode ser utilizado para configurar e gerenciar múlti
 
 Contribuições são muito bem-vindas!
 
-- Encontrou um problema? Abra uma [issue](https://github.com/profmoisesomena/LangGraphExampleAgent/issues).
+- Encontrou um problema? Abra uma [issue](https://github.com/profmoisesomena/LangGraphExampleAgentWithTracing/issues).
 - Quer melhorar o agente? Envie um pull request!
 
 Sugestões, melhorias e correções pertinentes são bem vindas. 🚀
