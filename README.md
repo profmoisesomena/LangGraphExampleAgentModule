@@ -1,10 +1,13 @@
-# LangGraphExampleAgent 🌐
+# LangGraph Example Agent Module 🌐🤖
 
-Este projeto cria um agente inteligente capaz de buscar informações atualizadas na web usando o modelo **Gemini-2.5-pro-exp-03-25** integrado à **Tavily Search API**.
+Este projeto cria um sistema modular de agentes inteligentes capazes de buscar informações atualizadas na web usando multimodelos modelo **Gemini-2.5-pro-exp-03-25** e **Gemini-2.0-flash** integrado à **Tavily Search API**, além de gerar, validar e revisar conteúdo com múltiplos agentes orquestrados via **LangGraph** e outras ferramentas personalizadas.
 
-O agente é implementado usando a arquitetura **ReAct** via **LangGraph**, permitindo raciocinar sobre perguntas recebidas e e executar ações externas (como buscas online) para construir respostas mais completas e atualizadas..
+O projeto utiliza a arquitetura **ReAct** para raciocinar sobre perguntas recebidas e executar ações externas (como buscas online) para construir respostas completas e atualizadas.
 
-Esta versão do projeto incorpora integração com LangSmith para rastreamento (tracing) das execuções do agente, possibilitando inspecionar e avaliar o passo a passo de suas operações.
+### 🌟 Destaques:
+- Integração com **LangSmith** para rastreamento (tracing) das execuções dos agentes.
+- Arquitetura modular e expansível com suporte a múltiplos agentes em cadeia.
+- Execução interativa com **LangGraph CLI** ou scripts diretos.
 
 ---
 
@@ -17,25 +20,55 @@ Esta versão do projeto incorpora integração com LangSmith para rastreamento (
 - [LangChain Community Tools (Tavily)](https://github.com/langchain-ai/langchain/tree/main/libs/langchain-community)
 - [Tavily Search API](https://app.tavily.com/)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
-- [LangSmith (plataforma de observabilidade e tracing para agentes LangChain)](https://pypi.org/project/langsmith/)
+- [LangSmith (tracing para agentes LangChain)](https://pypi.org/project/langsmith/)
 
 ---
 
 ## 📦 Estrutura do Projeto
 
 ```
+LangGraphExampleAgentModule-main/
+├── .env.example                   # Exemplo de variáveis de ambiente
+├── .gitignore                     # Arquivos/diretórios ignorados pelo Git
+├── README.md                      # Arquivo de documentação do projeto
+├── agent.py                       # Script principal para execução de agentes
+├── config.py                      # Configurações gerais do projeto
+├── image-1.png                    # Imagem ilustrativa do projeto
+├── image.png                      # Outra imagem do projeto
+├── langgraph.json                 # Configuração JSON do grafo LangGraph
+├── main.py                        # Entrada principal do projeto
+├── requirements.txt               # Dependências do projeto
+├── tools.py                       # Ferramentas auxiliares
+├── agents/                        # Módulo com a lógica dos agentes
+│   ├── __init__.py
+│   ├── chains.py                  # Definição das cadeias de execução dos agentes
+│   ├── create_agents.py           # Criação e configuração dos agentes
+│   ├── graph_builder.py           # Construção do grafo de execução
+│   ├── nodes.py                   # Definição dos nós (funções) do grafo
+│   ├── personas.py                # Configuração de personas usadas pelos agentes
+│   ├── state.py                   # Definição do estado compartilhado no grafo
+│   └── utils.py                   # Utilitários diversos
 
 ```
+
 ![alt text](image-1.png)
-## ✨ Novidades e Funcionalidades Adicionadas
 
-- **Integração com LangSmith:** Agora o agente pode registrar automaticamente suas execuções na plataforma LangSmith.
-- **Função `run_agent` com decorator `@traceable`:** Facilita rastreamento de interações individuais com o agente.
-- **Execução direta com exemplo integrado:** Permite rodar rapidamente uma consulta de exemplo.
+---
 
-#### Imagem com exemplo de tracing de projetos
+## ✨ Funcionalidades Adicionais
+
+- **Fluxo com Múltiplos Agentes:**
+  - Agente 1: Pesquisa contextualizada na web.
+  - Agente 2: Geração de conteúdo (ex: posts).
+  - Agente 3: Validação e incremento do conteúdo.
+  - Agente 4: Revisão final com otimização textual.
+
+- **Integração com LangSmith:** Registro automático de execuções.
+- **Função `run_agent` com decorator `@traceable`:** Rastreia interações.
+- **Execução direta com exemplo integrado.**
 
 ![alt text](image.png)
+
 ---
 
 ## ⚙️ Configuração e Instalação
@@ -56,68 +89,47 @@ source .venv/bin/activate  # Linux / MacOS
 .venv\Scripts\activate      # Windows
 ```
 
-3. **Instale as dependências necessárias:**
+3. **Instale as dependências:**
 
 ```bash
-pip install -U langgraph langchain-core langchain-google-genai langchain-community tavily-python python-dotenv
+pip install -r requirements.txt
 pip install -U "langgraph-cli[inmem]"
 ```
-
-*(Dica: Você pode também criar um `requirements.txt` com essas bibliotecas para facilitar a instalação.)*
-
 4. **Configure as variáveis de ambiente:**
-
-Crie um arquivo `.env` baseado no exemplo `.env.example`:
 
 ```bash
 cp .env.example .env
 ```
+5. **Preencha o .env com suas chaves de API:**
 
-Edite o arquivo `.env` preenchendo com suas chaves de API:
-
-```env
+```
 GEMINI_API_KEY=your_gemini_api_key_here
 TAVILY_API_KEY=your_tavily_api_key_here
 LANGSMITH_API_KEY=your_langsmith_api_key_here
 ```
+## 🚀 Como Rodar o Agente:**
 
----
-
-## 🚀 Como Rodar o Agente
-
-Após configurar tudo, para iniciar o ambiente de desenvolvimento do LangGraph:
+6. **Ambiente interativo com LangGraph:**
 
 ```bash
 langgraph dev
 ```
+ Sobre o langgraph.json:<br>Este arquivo é usado para configurar e gerenciar múltiplos agentes, rotas e parâmetros de execução personalizados no LangGraph.
 
-Isso abrirá um ambiente interativo para testar o agente!
-
-
----
-**Execução direta no terminal:**
+7. **Execução direta no terminal:**
 
 ```bash
 python main.py
 ```
 
----
-
-## 💑 Sobre o `langgraph.json`
-
-O arquivo `langgraph.json` pode ser utilizado para configurar e gerenciar múltiplos agentes, rotas e parâmetros de execução no seu projeto LangGraph.
 
 
----
+
+
 
 ## 🤝 Contribuindo
+Contribuições Sugestões, melhorias e correções pertinentes são bem-vindas. 
 
-Contribuições são muito bem-vindas!
+Encontrou um problema? Abra uma issue.
 
-- Encontrou um problema? Abra uma [issue](https://github.com/profmoisesomena/LangGraphExampleAgentWithTracing/issues).
-- Quer melhorar o agente? Envie um pull request!
-
-Sugestões, melhorias e correções pertinentes são bem vindas. 🚀
-
-
-
+Quer melhorar o agente? Envie um pull request!

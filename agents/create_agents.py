@@ -1,5 +1,5 @@
 from langgraph.prebuilt import create_react_agent
-from config import llm_model
+from config import llm_model,llm_model2
 from tools import available_tools_online, available_tools_local
 from agents.personas import persona_message_1, persona_message_3
 
@@ -12,7 +12,7 @@ agent_1_graph = create_react_agent(
 
 # Agente 3: Validador com tools locais
 agent_3_graph = create_react_agent(
-    llm_model,
+    llm_model2,
     tools=available_tools_local,
     prompt=persona_message_3
 )
