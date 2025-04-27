@@ -1,4 +1,5 @@
 .venv/
 .env
 .langgraph_api/
-__pycache__
+__pycache__/
+__others/
