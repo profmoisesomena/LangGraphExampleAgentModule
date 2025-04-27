@@ -24,12 +24,7 @@ Esta versão do projeto incorpora integração com LangSmith para rastreamento (
 ## 📦 Estrutura do Projeto
 
 ```
-LangGraphExampleAgentWithTracing/
-├── .env.example     # Exemplo de configuração de variáveis de ambiente
-├── README.md        # Documentação do projeto
-├── langgraph_example.py         # Código principal do agente LangGraph (ReAct Agent)
-├── requirements.txt # (opcional) Arquivo com dependências do projeto
-└── langgraph.json   # Arquivo de Configuração LangGraph
+
 ```
 
 ## ✨ Novidades e Funcionalidades Adicionadas
@@ -103,7 +98,7 @@ Isso abrirá um ambiente interativo para testar o agente!
 **Execução direta no terminal:**
 
 ```bash
-python langgraph_example.py
+python main.py
 ```
 
 ---
