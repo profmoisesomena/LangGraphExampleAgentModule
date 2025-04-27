@@ -26,7 +26,7 @@ Esta versão do projeto incorpora integração com LangSmith para rastreamento (
 ```
 
 ```
-
+![alt text](image-1.png)
 ## ✨ Novidades e Funcionalidades Adicionadas
 
 - **Integração com LangSmith:** Agora o agente pode registrar automaticamente suas execuções na plataforma LangSmith.
